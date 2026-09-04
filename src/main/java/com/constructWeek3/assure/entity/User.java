@@ -1,9 +1,8 @@
 package com.constructWeek3.assure.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,15 +42,4 @@ public class User {
     public void addClaim(Claim claim) {
         this.claims.add(claim);
     }
-
-    //    @OneToMany
-//    private List<Claims> claimsList = new ArrayList<>();
-//
-//    public void setClaims(Policy policy){
-//        this.policyList.add(policy);
-//    }
-//
-//    public void removeClaims(Policy policy){
-//        this.policyList.remove(policy);
-//    }
 }

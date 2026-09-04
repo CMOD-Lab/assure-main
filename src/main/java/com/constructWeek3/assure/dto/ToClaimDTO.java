@@ -1,15 +1,9 @@
 package com.constructWeek3.assure.dto;
 
-import com.constructWeek3.assure.entity.*;
 import lombok.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -28,6 +22,4 @@ public class ToClaimDTO {
     private Float amountToClaim;
     private Boolean preauthorizedConfirmation;
     private Boolean followUpVisits;
-
-
 }

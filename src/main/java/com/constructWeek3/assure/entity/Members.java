@@ -1,9 +1,8 @@
 package com.constructWeek3.assure.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +19,7 @@ public class Members {
     private Long member_id;
     private String name;
     private String relation_with_user;
-    private Date DOB ;
+    private Date DOB;
     private String gender;
     private Boolean is_taking_medicines;
     private String city;

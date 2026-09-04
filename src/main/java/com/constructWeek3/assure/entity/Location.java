@@ -1,13 +1,9 @@
 package com.constructWeek3.assure.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +19,7 @@ public class Location {
     Long locationId;
     String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "locations")
     public List<Policy> policies = new ArrayList<>();
 
@@ -36,8 +33,6 @@ public class Location {
     }
 
     public void addPolicies(Policy policy){
-    this.policies.add(policy);
+        this.policies.add(policy);
     }
-
-
 }

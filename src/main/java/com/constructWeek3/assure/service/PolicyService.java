@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PolicyService extends ModelMapper {
+public class PolicyService {
 
     @Autowired
     private PolicyRepository policyRepository;
@@ -45,9 +45,8 @@ public class PolicyService extends ModelMapper {
     protected Boolean isAgeProvided(Integer age1) {
         return !(age1 == null || age1 == 0);
     }
-    public List<PolicyDTO> getPolicies(AgeDTO ages) {
 
-//        Long user = ages.getUserId();
+    public List<PolicyDTO> getPolicies(AgeDTO ages) {
 
         Integer ageSelf = ages.getAgeOfSelf();
         Integer ageFather = ages.getAgeOfFather();

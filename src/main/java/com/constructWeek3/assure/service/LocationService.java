@@ -1,6 +1,5 @@
 package com.constructWeek3.assure.service;
 
-import antlr.collections.impl.LList;
 import com.constructWeek3.assure.entity.Location;
 import com.constructWeek3.assure.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.constructWeek3.assure.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -41,7 +41,7 @@ public class PolicyBookings {
 
     @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name="policy_bookings_booking_id")
-    private List<Claim> ListOfClaims;
+    private List<Claim> ListOfClaims = new ArrayList<>();
 
     public void addMember(Members member) {
         members.add(member);

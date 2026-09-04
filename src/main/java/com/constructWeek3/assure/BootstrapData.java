@@ -13,9 +13,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Component
-public class BootstrapData implements CommandLineRunner{
+public class BootstrapData implements CommandLineRunner {
     @Autowired
     ClaimsRepository claimsRepository;
 
@@ -27,18 +28,28 @@ public class BootstrapData implements CommandLineRunner{
 
     @Autowired
     PolicyBookingsRepository policyBookingsRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        Optional<Members> memberOpt = membersRepository.findById(1L);
+        Optional<User> userOpt = userRepository.findById(1L);
+        Optional<PolicyBookings> policyBookedOpt = policyBookingsRepository.findById(1L);
 
-        Members member = membersRepository.findById(1L).get();
-        User user = userRepository.findById(1L).get();
+        if (memberOpt.isEmpty() || userOpt.isEmpty() || policyBookedOpt.isEmpty()) {
+            // Skip bootstrap data if required entities don't exist
+            return;
+        }
+
+        Members member = memberOpt.get();
+        User user = userOpt.get();
+        PolicyBookings policyBooked = policyBookedOpt.get();
+
         Claim claim = new Claim();
         claim.setClaimItem("Hospital Bills");
         claim.setAmountToClaim(20000.0f);
         claim.setAadharNumber(123456781234L);
         claim.setMember(member);
         claim.setUser(user);
-        PolicyBookings policyBooked = policyBookingsRepository.findById(1L).get();
         claim.setPolicyBookings(policyBooked);
         claim.setDateOfTreatment(new Date());
         claim.setSubmissionDate(new Date());
